@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalogo de películas</title>
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+</head>
+<body>
+    <h1>🎬 Peliculas</h1>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <a href="{% url 'detail' movie.id %}">
+                    {{ movie.title }} - {{ movie.release_year }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay pel+iculas disponibles</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
